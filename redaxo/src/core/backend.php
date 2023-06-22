@@ -189,11 +189,22 @@ rex_view::addJsFile(rex_url::coreAssets('jquery-pjax.min.js'), [rex_view::JS_IMM
 rex_view::addJsFile(rex_url::coreAssets('standard.js'), [rex_view::JS_IMMUTABLE => true]);
 rex_view::addJsFile(rex_url::coreAssets('sha1.js'), [rex_view::JS_IMMUTABLE => true]);
 rex_view::addJsFile(rex_url::coreAssets('clipboard-copy-element.js'), [rex_view::JS_IMMUTABLE => true]);
+rex_view::addJsFile(rex_url::coreAssets('session-timeout.js'), [rex_view::JS_IMMUTABLE => true]);
 
 rex_view::setJsProperty('backend', true);
 rex_view::setJsProperty('accesskeys', rex::getProperty('use_accesskeys'));
 rex_view::setJsProperty('session_keep_alive', rex::getProperty('session_keep_alive', 0));
+rex_view::setJsProperty('session_duration', rex::getProperty('session_duration', 0));
+rex_view::setJsProperty('session_warning', rex::getProperty('session_warning', 0));
+rex_view::setJsProperty('session_logout_url', rex_url::backendController(['rex_logout' => 1] + rex_csrf_token::factory('backend_logout')->getUrlParams(), false));
 rex_view::setJsProperty('cookie_params', rex_login::getCookieParams());
+
+rex_view::setJsProperty('i18n', [
+    'session_timeout_title' => rex_i18n::msg('session_timeout_title'),
+    'session_timeout_message' => rex_i18n::msg('session_timeout_message', rex::getProperty('session_warning', 0)),
+    'session_timeout_logout_label' => rex_i18n::msg('session_timeout_logout_label'),
+    'session_timeout_refresh_label' => rex_i18n::msg('session_timeout_refresh_label'),
+]);
 
 // ----- INCLUDE ADDONS
 include_once rex_path::core('packages.php');

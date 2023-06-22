@@ -499,3 +499,8 @@ created_on = Erstellt am
 updated_by = Aktualisiert von
 updated_on = Aktualisiert am
 status = Status
+
+session_timeout_title = Die Sitzung läuft bald ab!
+session_timeout_message = Die Session läuft in {0} Sekunden ab. Soll diese wieder verlängert werden?
+session_timeout_logout_label = Abmelden
+session_timeout_refresh_label = Session verlängern

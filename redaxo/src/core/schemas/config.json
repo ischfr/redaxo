@@ -98,6 +98,10 @@
             "description": "A session cannot stay longer then this value, no matter its actively used once in a while (seconds)",
             "type": "integer"
         },
+        "session_warning": {
+            "description": "Time until a warning dialog is opened. (seconds)",
+            "type": "integer"
+        },
         "backend_login_policy": {
             "description": "backend login policy",
             "type": "object",
